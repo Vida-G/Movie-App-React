@@ -27,12 +27,12 @@ export const MovieForm = (props: MovieFormProps) => {
     const name = useSelector<MovieState>(state => state.name)
     const { register, handleSubmit } = useForm({})
 
-    const onSubmit = (data: any, event: any) => {
+    const onSubmit = async (data: any, event: any) => {
         console.log(props.id)
         console.log(props)
 
         if (props.id!) {
-            server_calls.update(props.id!, data)
+            await server_calls.update(props.id!, data)
             console.log(`Updated:${data} ${props.id}`)
             window.location.reload()
             event.target.reset();
@@ -40,7 +40,8 @@ export const MovieForm = (props: MovieFormProps) => {
             dispatch(chooseName(data.name))
             dispatch(chooseGenre(data.genre))
             dispatch(chooseYear(data.year))
-            server_calls.create(store.getState())
+            await server_calls.create(store.getState())
+            window.location.reload()
         }
     }
 

@@ -67,8 +67,8 @@ export const DataTable = () => {
         setOpen(false)
     }
 
-    let deleteData = () => {
-        server_calls.delete(selectionModel)
+    let deleteData = async () => {
+        await server_calls.delete(selectionModel)
         getData()
         console.log('deleted selection!', selectionModel)
     }

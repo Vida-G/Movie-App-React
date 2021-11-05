@@ -137,7 +137,7 @@ export const Dashboard = withRouter((props: DashProps) => {
             onClick: () => history.push('/')
         },
         {
-            text: 'Sign In',
+            text: 'Sign Out',
             onClick: () => history.push('/signin')
         }
     ];
